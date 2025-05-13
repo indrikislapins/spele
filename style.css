@@ -1,0 +1,37 @@
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #eef2f3;
+}
+
+#map-container {
+  position: relative;
+  display: inline-block;
+}
+
+#latvia-map {
+  max-width: 70%;
+  height: auto;
+}
+
+.marker {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  border: 2px solid white;
+}
+
+#question {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+#result {
+  margin-top: 10px;
+  font-weight: bold;
+}

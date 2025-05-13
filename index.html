@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Latvia City Guesser</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Guess the Latvian City!</h1>
+  <div id="map-container">
+    <img src="latvia-map.jpg" id="latvia-map" alt="Latvia Map">
+    <div class="marker" data-city="Riga" style="top: 48%; left: 46%;"></div>
+    <div class="marker" data-city="Daugavpils" style="top: 92%; left: 69%;"></div>
+    <div class="marker" data-city="Liepaja" style="top: 65%; left: 17%;"></div>
+    <div class="marker" data-city="Valmiera" style="top: 22%; left: 58%;"></div>
+    <div class="marker" data-city="Jelgava" style="top: 60%; left: 42%;"></div>
+  </div>
+  <div id="question"></div>
+  <div id="result"></div>
+  <button onclick="nextQuestion()">Next City</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
