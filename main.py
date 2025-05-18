@@ -1,8 +1,9 @@
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request 
 import json
 import os
 
 app = Flask (__name__)
+
 
 HIGHSCORE_FILE = "highscores.json"
 
@@ -27,13 +28,34 @@ def index():
 @app.route("/rezult")
 def rezult():
     scores = load_highscores()
-    return render_template("rezult.html")
+    rezultati = []
+    try:
+        with open("rezultati.txt", "r", encoding="utf-8") as f:
+            for line in f:
+                parts = line.strip().split(",")
+                if len(parts) == 2:
+                    rezultati.append({"lietotajs": parts[0], "punkti": parts[1]})
+    except FileNotFoundError:
+        rezultati = []
+
+    return render_template("rezult.html", rezultati=rezultati)
+    
 
 @app.route("/pievienot", methods=["POST"])
 def piev():
-    name = request.form.get("name")
-    score = request.form.get("score")
-    save_highscore(name, score)
+    username = request.form.get("username", "Nezināms")
+    rezultats_str = request.form.get("rezultats", "0")
+
+    try:
+        rezultats = int(rezultats_str)
+    except ValueError:
+        rezultats = 0
+
+    print(f"Lietotājs: {username}, Punkti: {rezultats}")
+
+    with open("text.txt", "a", encoding="utf-8") as f:
+        f.write(f"{username},{rezultats}\n")
+
     return redirect("/rezult")
 
 if __name__ =='__main__':
