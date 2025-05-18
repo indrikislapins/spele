@@ -1,6 +1,23 @@
 from flask import Flask, redirect, render_template, request
+import json
+import os
 
 app = Flask (__name__)
+
+HIGHSCORE_FILE = "highscores.json"
+
+def load_highscores():
+    if os.path.exists(HIGHSCORE_FILE):
+        with open(HIGHSCORE_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return []
+
+def save_highscore(name, score):
+    scores = load_highscores()
+    scores.append({"name": name, "score": int(score)})
+    scores = sorted(scores, key=lambda x: x["score"], reverse=True)[:10]
+    with open(HIGHSCORE_FILE, "w", encoding="utf-8") as f:
+        json.dump(scores, f, indent=2, ensure_ascii=False)
 
 @app.route("/")
 def index():
@@ -9,12 +26,15 @@ def index():
 
 @app.route("/rezult")
 def rezult():
+    scores = load_highscores()
     return render_template("rezult.html")
 
 @app.route("/pievienot", methods=["POST"])
 def piev():
-    return redirect("/")
-
+    name = request.form.get("name")
+    score = request.form.get("score")
+    save_highscore(name, score)
+    return redirect("/rezult")
 
 if __name__ =='__main__':
     app.run(port=5000)
