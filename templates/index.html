@@ -66,9 +66,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 score += 1;
                 document.getElementById("score").innerText = score;
                 document.getElementById("rezult").value = score;
-                alert("Pareizi! Punkti: " + score);
+                document.getElementById("result").textContent = "Pareizi! Punkti: " + score;
             } else {
-                alert("Nepareizi! Tā bija: " + currentCity);
+                document.getElementById("result").textContent = "Nepareizi! Tā bija: " + currentCity;
             }
             nextQuestion();
         });

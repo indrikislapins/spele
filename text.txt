@@ -2,3 +2,6 @@ ralfs,4
 roberts,5
 roberts,3
 roberts,3
+kristers,16
+j,1
+indulis,5
