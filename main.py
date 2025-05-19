@@ -30,7 +30,7 @@ def rezult():
     scores = load_highscores()
     rezultati = []
     try:
-        with open("rezultati.txt", "r", encoding="utf-8") as f:
+        with open("text.txt", "r", encoding="utf-8") as f:
             for line in f:
                 parts = line.strip().split(",")
                 if len(parts) == 2:
