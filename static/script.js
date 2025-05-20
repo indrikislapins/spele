@@ -1,5 +1,5 @@
 
-const cities = ["Riga", "Daugavpils", "Liepaja", "Valmiera", "Jelgava"];
+const cities = ["Rīga", "Daugavpils", "Liepāja", "Valmiera", "Jelgava", "Ventspils", "Alūksne", "Kolka"];
 let currentCity = "";
 let score = 0;
 
@@ -21,6 +21,7 @@ document.querySelectorAll(".marker").forEach(marker => {
       score++;
       document.getElementById("result").textContent = "Pareizi!";
       document.getElementById("result").style.color = "green";
+      marker.remove();
     } else {
       document.getElementById("result").textContent = `Nepareizi! Tā bija: ${currentCity}`;
       document.getElementById("result").style.color = "red";
